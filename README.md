@@ -31,6 +31,7 @@ SELECT
     ) AS customer_id
 FROM order_details AS od;
 ```
+![Результат завдання 1](screenshots/p1_select_subquery.png)
 
 ### Завдання 2. Вкладений запит у блоці WHERE
 Виконано фільтрацію замовлень за допомогою предикату IN, щоб відібрати записи деталей замовлень, для яких служба доставки має ідентифікатор shipper_id = 3.
@@ -44,6 +45,8 @@ WHERE od.order_id IN (
     WHERE o.shipper_id = 3
 );
 ```
+
+![Результат завдання 2](screenshots/p2_where_subquery.png)
 
 ### Завдання 3. Вкладений запит у блоці FROM (Derived Table)
 Сформовано проміжну віртуальну таблицю з рядками, де quantity > 10. На базі отриманих даних пораховано середнє значення поля quantity з групуванням за order_id.
@@ -60,6 +63,8 @@ FROM (
 GROUP BY temp.order_id;
 ```
 
+![Результат завдання 3](screenshots/p3_from_subquery.png)
+
 ### Завдання 4. Використання оператора WITH (CTE)
 Аналогічно завданню 3 розраховано середню кількість товару для позицій із quantity > 10, проте тимчасову таблицю винесено в блок WITH для підвищення читабельності коду.
 
@@ -75,6 +80,8 @@ SELECT
 FROM temp
 GROUP BY order_id;
 ```
+
+![Результат завдання 4](screenshots/p4_cte_with.png)
 
 ### Завдання 5. Створення функції користувача (User-Defined Function)
 Створено детерміновану функцію Divide, яка приймає два параметри типу FLOAT, виконує операцію ділення та повертає результат типу FLOAT. Функцію застосовано до поля quantity таблиці order_details (із тестовим дільником 2.0).
@@ -103,3 +110,5 @@ SELECT
     Divide(quantity, 2.0) AS divided_quantity
 FROM order_details;
 ```
+
+![Результат завдання 5](screenshots/p5_stored_function.png)
